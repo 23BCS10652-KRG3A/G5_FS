@@ -1,0 +1,40 @@
+import React, { useState } from "react";
+function UserProfile({ username }) {
+  return <div>Logged in as: <strong>{username}</strong></div>;
+}
+
+function Icon({ username }) {
+  return (
+    <div>
+      🔔
+      <UserProfile username={username} />
+    </div>
+  );
+}
+
+function Header({ username }) {
+  return (
+    <header>
+      <h2>My Small App</h2>
+      <Icon username={username} />
+    </header>
+  );
+}
+
+function App() {
+  const [username, setUsername] = useState("Khushi"); // state in App
+
+  return (
+    <div>
+      {/* Input to dynamically update username */}
+      <input
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <Header username={username} />
+    </div>
+  );
+}
+
+export default App;
